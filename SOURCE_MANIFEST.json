@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "subject": "8angelov-admin-independent-review",
+  "snapshot_date": "2026-11-04",
+  "complete_site": false,
+  "release_accepted": false,
+  "files": [
+    {
+      "path": "src/native-editor-frame.js",
+      "bytes": 39546,
+      "sha256": "72d38eb65b927beb5dbfc78b2c8b8bf626d5595641a43607eb0d9879589f6bf8"
+    },
+    {
+      "path": "src/manager.css",
+      "bytes": 27720,
+      "sha256": "c8cf194c6082822e3dba730f8fe99f8fc4c041ca3d24459dbe2717064d99985a"
+    },
+    {
+      "path": "src/manager-style-plugin.php",
+      "bytes": 1279,
+      "sha256": "47abde595a99af5c44c8fc83a1b47b768c135e1a8c990ef759cabe1889b96a16"
+    }
+  ]
+}
