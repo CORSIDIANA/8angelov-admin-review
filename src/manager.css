@@ -1,0 +1,452 @@
+/* 8 Angels / native MODX 2.8.9 default manager — presentation candidate only.
+ * Load locally through controller->addCss after default styles.
+ * No native widths, heights, positioning, visibility, permissions or labels change.
+ */
+#modx-body-tag {
+  --angel-ivory: #f6f4ee;
+  --angel-paper: #fffefa;
+  --angel-slate: #29363e;
+  --angel-muted: #59666b;
+  --angel-gold: #8a6b32;
+  --angel-line: #dedbd1;
+  --angel-selected: #eee6d4;
+  --angel-focus: #246b91;
+  background-color: var(--angel-ivory);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+#modx-body-tag #modx-header {
+  background: var(--angel-slate);
+  box-shadow: inset 0 -2px 0 #b59860;
+}
+#modx-body-tag #modx-topnav > li > a,
+#modx-body-tag #modx-user-menu > li > a,
+#modx-body-tag #site_name { color: #fffefa; }
+#modx-body-tag #modx-site-info .full_appname { color: #dedbd1; }
+#modx-body-tag #modx-topnav > li > a:hover,
+#modx-body-tag #modx-user-menu > li > a:hover { background-color: #3a4952; }
+#modx-body-tag #modx-leftbar { background-color: #f0eee7; }
+#modx-body-tag #modx-leftbar .x-tree-node .x-tree-selected {
+  background-color: var(--angel-selected);
+  box-shadow: inset 3px 0 0 var(--angel-gold);
+}
+#modx-body-tag #modx-leftbar .x-tree-node .x-tree-selected a span {
+  color: #29363e;
+  font-weight: 600;
+}
+#modx-body-tag #modx-resource-header { color: var(--angel-slate); }
+#modx-body-tag #modx-resource-tabs .x-tab-strip li.x-tab-strip-active {
+  color: #654c20;
+  background-color: var(--angel-paper);
+  box-shadow: 0 -3px 0 var(--angel-gold), -1px 0 0 transparent;
+}
+#modx-body-tag #modx-panel-resource .x-form-item-label { color: var(--angel-slate); }
+#modx-body-tag #modx-panel-resource .x-form-text:not(.x-form-invalid):not(:disabled):not([readonly]):not([aria-disabled="true"]):not([aria-readonly="true"]):not(.x-item-disabled):not(.x-item-disabled *):not([aria-disabled="true"] *):not([aria-readonly="true"] *),
+#modx-body-tag #modx-panel-resource .x-form-textarea:not(.x-form-invalid):not(:disabled):not([readonly]):not([aria-disabled="true"]):not([aria-readonly="true"]):not(.x-item-disabled):not(.x-item-disabled *):not([aria-disabled="true"] *):not([aria-readonly="true"] *) {
+  background-color: var(--angel-paper);
+  border-color: #a7acaa;
+  color: #25343d;
+}
+/* Native disabled styling remains authoritative: never brighten a disabled save. */
+#modx-body-tag #modx-abtn-save.primary-button:not(.x-item-disabled) {
+  background: #374e59;
+  border-color: #293f49;
+  box-shadow: inset 0 -2px 0 #b59860;
+  color: #fff;
+}
+#modx-body-tag #modx-abtn-save.primary-button:not(.x-item-disabled):hover {
+  background: #293f49;
+}
+#modx-body-tag #modx-abtn-save.primary-button:not(.x-item-disabled) button { color: #fff; }
+#modx-body-tag #modx-content .dashboard-block {
+  background-color: var(--angel-paper);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgb(41 54 62 / 7%);
+}
+#modx-body-tag #modx-content .dashboard-block .title { color: var(--angel-slate); }
+#modx-body-tag #modx-leftbar a:focus-visible,
+#modx-body-tag #modx-header a:focus-visible,
+#modx-body-tag #modx-content a:focus-visible,
+#modx-body-tag #modx-content input:focus-visible,
+#modx-body-tag #modx-content textarea:focus-visible,
+#modx-body-tag #modx-content button:focus-visible,
+#modx-body-tag #modx-action-buttons button:focus-visible,
+#modx-body-tag #modx-action-buttons .x-btn-focus {
+  outline: 3px solid var(--angel-focus);
+  outline-offset: 2px;
+}
+/* All layout/spacing below belongs only to our new HTML dashboard widget. */
+#modx-body-tag .angel-owner {
+  color: var(--angel-slate);
+  padding: 28px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+#modx-body-tag .angel-owner * { box-sizing: border-box; }
+#modx-body-tag .angel-owner .angel-welcome-heading { display: flex; align-items: center; gap: 20px; }
+#modx-body-tag .angel-owner .angel-brandmark {
+  display: inline-flex;
+  flex: 0 0 60px;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 72px;
+  border: 1px solid #b59860;
+  border-radius: 30px 30px 8px 8px;
+  background: #f2edde;
+  color: #715522;
+  font: 42px/1 Georgia, "Times New Roman", serif;
+}
+#modx-body-tag .angel-owner .angel-eyebrow {
+  margin: 0 0 8px;
+  color: #715522;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+#modx-body-tag .angel-owner h2 { margin: 0 0 10px; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2; font-weight: 600; letter-spacing: -.025em; }
+#modx-body-tag .angel-owner .angel-intro { max-width: 65ch; margin: 0; color: var(--angel-muted); }
+#modx-body-tag .angel-owner .angel-guides {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 18px;
+  margin: 32px 0 26px;
+}
+#modx-body-tag .angel-owner .angel-guide { padding: 18px; border: 1px solid var(--angel-line); border-radius: 6px; background: #faf8f2; }
+#modx-body-tag .angel-owner .angel-step { display: block; margin: 0 0 16px; color: #8a6b32; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+#modx-body-tag .angel-owner .angel-guide h3 { margin: 0 0 8px; font-size: 16px; font-weight: 650; }
+#modx-body-tag .angel-owner .angel-guide p { margin: 0; color: var(--angel-muted); }
+#modx-body-tag .angel-owner .angel-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; }
+#modx-body-tag .angel-owner .angel-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  color: #fff;
+  background: #374e59;
+  border: 1px solid #374e59;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+#modx-body-tag .angel-owner .angel-links a.angel-secondary { color: #374e59; background: transparent; }
+#modx-body-tag .angel-owner .angel-links a:hover { text-decoration: underline; }
+#modx-body-tag .angel-owner .angel-note { margin: 20px 0 0; padding-left: 14px; border-left: 3px solid #b59860; color: #59666b; }
+@media (max-width: 600px) {
+  #modx-body-tag .angel-owner { padding: 18px; }
+  #modx-body-tag .angel-owner h2 { font-size: 24px; }
+  #modx-body-tag .angel-owner .angel-welcome-heading { align-items: flex-start; gap: 14px; }
+  #modx-body-tag .angel-owner .angel-brandmark { flex-basis: 44px; width: 44px; height: 56px; font-size: 32px; }
+}
+/* Reserved presentation for a future read-only helper; no evaluator exists here. */
+#modx-body-tag .angel-manager-checklist {
+  padding: 18px;
+  margin: 22px 0 0;
+  border: 1px solid var(--angel-line);
+  border-left: 3px solid #b59860;
+  border-radius: 6px;
+  background: #f7f4eb;
+  color: #29363e;
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+#modx-body-tag .angel-manager-checklist h2 { margin: 0 0 8px; font-size: 18px; font-weight: 600; }
+#modx-body-tag .angel-manager-checklist p { margin: 0 0 14px; color: #59666b; }
+#modx-body-tag .angel-manager-checklist dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px 20px; margin: 0; }
+#modx-body-tag .angel-manager-checklist .angel-check-row { padding: 10px 0 0; border-top: 1px solid #dedbd1; }
+#modx-body-tag .angel-manager-checklist dt { margin: 0 0 6px; font-size: 12px; font-weight: 600; color: #59666b; }
+#modx-body-tag .angel-manager-checklist dd { margin: 0; }
+#modx-body-tag .angel-manager-checklist .angel-state { display: inline-block; padding: 3px 9px; border-radius: 4px; background: #e8ede9; color: #334c40; font-size: 12px; }
+#modx-body-tag .angel-manager-checklist .angel-state-note { background: #eee6d4; color: #654c20; }
+/* Native release theme. Ext retains all geometry and event ownership.
+   Local licensed Manrope / Cormorant assets already installed with visual-theme1. */
+@font-face{font-family:AngelText;src:url('/assets/components/magicpreview/visual-theme1/fonts/QuietText-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:AngelText;src:url('/assets/components/magicpreview/visual-theme1/fonts/QuietText-Semibold.woff2') format('woff2');font-style:normal;font-weight:600 800;font-display:swap}
+@font-face{font-family:AngelDisplay;src:url('/assets/components/magicpreview/visual-theme1/fonts/QuietDisplay-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+#modx-body-tag{
+ --angel-ivory:#f5f2ec;--angel-paper:#fffefa;--angel-slate:#252a2a;
+ --angel-muted:#656961;--angel-gold:#866637;--angel-line:#dfdbd2;
+ --angel-selected:#f3e7d6;--angel-focus:#176584;--angel-coral:#fa5a4a;
+ --angel-sidebar:#232625;--angel-ui:AngelText,'Segoe UI',Arial,sans-serif;
+ background:#f5f2ec;color:#252a2a;font-family:var(--angel-ui);
+}
+/* Header keeps the native 55px height, navigation widths and responsive menu. */
+#modx-body-tag #modx-header,
+#modx-body-tag #modx-navbar{background:#faf8f3;box-shadow:inset 0 -1px 0 var(--angel-line)}
+#modx-body-tag #modx-home-dashboard,
+#modx-body-tag #modx-site-info{background:var(--angel-sidebar)}
+#modx-body-tag #modx-home-dashboard>a{
+ background-image:url('/assets/components/magicpreview/visual-theme1/brand-eight-wing.svg');
+ background-position:center;background-repeat:no-repeat;background-size:42px 42px;
+}
+#modx-body-tag #site_name{color:#f8f2e9;font-family:AngelDisplay,Georgia,serif;font-size:22px;line-height:1.1;font-weight:400}
+#modx-body-tag #modx-site-info .full_appname{color:#ccc3b6;font-size:10px;font-style:normal}
+#modx-body-tag #modx-topnav>li>a,
+#modx-body-tag #modx-user-menu>li>a{color:#303530;font-family:var(--angel-ui);text-shadow:none}
+#modx-body-tag #modx-topnav>li>a:hover,
+#modx-body-tag #modx-user-menu>li>a:hover{background:#eee8dc;color:#222722}
+#modx-body-tag #modx-topnav .modx-subnav,
+#modx-body-tag #modx-user-menu .modx-subnav{background:var(--angel-paper);border-color:var(--angel-line);box-shadow:0 12px 28px #2827221a}
+#modx-body-tag .modx-subnav>li>a{color:#2e342e}
+#modx-body-tag .modx-subnav .description{color:#6b7068}
+#modx-body-tag #modx-manager-search-icon .icon{color:#6b7266}
+/* Dark native navigation: no forced region or tree row dimensions. */
+#modx-body-tag #modx-leftbar,
+#modx-body-tag #modx-leftbar-tabpanel{background:var(--angel-sidebar);color:#efebe3}
+#modx-body-tag #modx-leftbar .x-tab-panel-body,
+#modx-body-tag #modx-leftbar .x-panel-body,
+#modx-body-tag #modx-leftbar .x-tree-root-ct,
+#modx-body-tag #modx-leftbar .x-tree-node,
+#modx-body-tag #modx-leftbar .x-toolbar,
+#modx-body-tag #modx-leftbar .x-tab-strip-wrap{background-color:var(--angel-sidebar);border-color:#41443d}
+#modx-body-tag #modx-leftbar .x-tab-strip-top>li{background:transparent;border-color:transparent}
+#modx-body-tag #modx-leftbar .x-tab-strip-top>li.x-tab-strip-active{background:#30342f;box-shadow:inset 0 -2px 0 var(--angel-coral)}
+#modx-body-tag #modx-leftbar .x-tab-strip-text{color:#e6e0d6;font-family:var(--angel-ui)}
+#modx-body-tag #modx-leftbar .x-tree-node a span{color:#e6e3db;font-family:var(--angel-ui)}
+#modx-body-tag #modx-leftbar .x-tree-node-el{border-radius:5px}
+#modx-body-tag #modx-leftbar .x-tree-node-over{background:#363b34}
+#modx-body-tag #modx-leftbar .x-tree-node .x-tree-selected{background:var(--angel-selected);box-shadow:inset 4px 0 0 var(--angel-coral)}
+#modx-body-tag #modx-leftbar .x-tree-selected a span{color:#262b26;font-weight:600}
+#modx-body-tag #modx-leftbar .x-tree-node .unpublished a span,
+#modx-body-tag #modx-leftbar .x-tree-node a.unpublished span{font-style:italic;color:#c5beb1}
+#modx-body-tag #modx-leftbar .x-tree-selected.unpublished a span,
+#modx-body-tag #modx-leftbar .x-tree-selected a.unpublished span{color:#655a49}
+#modx-body-tag #modx-leftbar .x-tree-node .deleted a span,
+#modx-body-tag #modx-leftbar .x-tree-node a.deleted span{text-decoration:line-through}
+#modx-body-tag #modx-leftbar .icon{color:#c8bdab}
+#modx-body-tag #modx-leftbar .x-tree-selected .icon{color:#69573c}
+#modx-body-tag #modx-leftbar .x-btn:not(.x-item-disabled){background:transparent;border-color:#65685f}
+#modx-body-tag #modx-leftbar .x-btn:not(.x-item-disabled) button{color:#e6e0d5}
+#modx-body-tag #modx-leftbar input.x-form-text:not(.x-form-invalid):not(:disabled){background:#30352f;border-color:#63695b;color:#fff9ee}
+#modx-body-tag #modx-leftbar input::placeholder{color:#cec7ba;opacity:1}
+/* Workspace and native cards: colours and surface treatment only. */
+#modx-body-tag #modx-content,
+#modx-body-tag #modx-content>.x-panel-bwrap>.x-panel-body,
+#modx-body-tag #modx-panel-resource,
+#modx-body-tag #modx-resource-tabs,
+#modx-body-tag #modx-panel-welcome{background:var(--angel-ivory)}
+#modx-body-tag #modx-resource-header,
+#modx-body-tag #modx-welcome-header{font-family:AngelDisplay,Georgia,serif;font-weight:400;color:#292c27;letter-spacing:-.025em}
+#modx-body-tag #modx-action-buttons-container{background:var(--angel-ivory)}
+#modx-body-tag #modx-content .x-panel-header{background:var(--angel-paper);border-color:var(--angel-line);color:#30362d}
+#modx-body-tag #modx-content .dashboard-block{background:var(--angel-paper);border-radius:12px;box-shadow:0 3px 20px #3931240c}
+#modx-body-tag #modx-content .dashboard-block>.title{background:#eee9de;color:#554b3a;font-family:var(--angel-ui);font-weight:600;border-bottom-color:var(--angel-line)}
+#modx-body-tag #modx-content .dashboard-block>.body{background:var(--angel-paper);color:#555b50}
+#modx-body-tag #modx-content .dashboard-block p.error{color:#a72e22;background:#fff1e9;border-left:3px solid #d9654b}
+#modx-body-tag #modx-resource-tabs .x-tab-panel-header,
+#modx-body-tag #modx-resource-tabs .x-tab-strip-wrap{background:var(--angel-ivory);border-color:var(--angel-line)}
+#modx-body-tag #modx-resource-tabs .x-tab-strip li{background:transparent}
+#modx-body-tag #modx-resource-tabs .x-tab-strip li.x-tab-strip-active{background:var(--angel-paper);box-shadow:inset 0 -3px 0 var(--angel-coral)}
+#modx-body-tag #modx-resource-tabs .x-tab-strip-text{color:#353b33;font-family:var(--angel-ui)}
+#modx-body-tag #modx-resource-tabs .x-tab-strip-active .x-tab-strip-text{font-weight:600}
+#modx-body-tag #modx-resource-tabs>.x-tab-panel-bwrap>.x-tab-panel-body{border-color:var(--angel-line);border-radius:9px;background:var(--angel-paper)}
+#modx-body-tag #modx-panel-resource .x-form-item-label{font-family:var(--angel-ui);font-size:12px;font-weight:400;color:#353a32}
+#modx-body-tag #modx-panel-resource label.x-form-item-label[for="modx-resource-pagetitle"]{font-weight:600}
+#modx-body-tag #modx-panel-resource .x-form-text:not(.x-form-invalid):not(:disabled):not([readonly]):not([aria-disabled=true]):not([aria-readonly=true]):not(.x-item-disabled):not(.x-item-disabled *):not([aria-disabled=true] *):not([aria-readonly=true] *),
+#modx-body-tag #modx-panel-resource .x-form-textarea:not(.x-form-invalid):not(:disabled):not([readonly]):not([aria-disabled=true]):not([aria-readonly=true]):not(.x-item-disabled):not(.x-item-disabled *):not([aria-disabled=true] *):not([aria-readonly=true] *){
+ background:var(--angel-paper);border-color:#c9c6bc;border-radius:6px;color:#282e27;font-family:var(--angel-ui);
+}
+#modx-body-tag #modx-panel-resource .x-form-text:focus:not(.x-form-invalid),
+#modx-body-tag #modx-panel-resource .x-form-textarea:focus:not(.x-form-invalid){border-color:var(--angel-focus);box-shadow:0 0 0 2px #17658420}
+#modx-body-tag #modx-panel-resource .x-form-invalid{border-color:#b42318;box-shadow:0 0 0 1px #b42318}
+#modx-body-tag .x-form-invalid-msg{color:#a3261d}
+#modx-body-tag #modx-resource-content .x-panel-body{border-color:var(--angel-line);border-radius:9px}
+#modx-body-tag #modx-resource-content textarea{font-family:var(--angel-ui)}
+/* Native Save remains Save. No fake draft/preview/status affordances. */
+#modx-body-tag #modx-abtn-save.primary-button:not(.x-item-disabled):not([aria-disabled=true]){background:var(--angel-coral);border-color:#dc4739;border-radius:7px;box-shadow:0 3px 8px #a934231a}
+#modx-body-tag #modx-abtn-save.primary-button:not(.x-item-disabled):not([aria-disabled=true]):hover{background:#e74939}
+#modx-body-tag #modx-abtn-save.primary-button:not(.x-item-disabled):not([aria-disabled=true]) button{color:#291612;font-family:var(--angel-ui);font-weight:600;text-shadow:none}
+#modx-body-tag #modx-action-buttons .x-btn:not(.primary-button):not(.x-item-disabled){background:var(--angel-paper);border-color:#d4cfc3;border-radius:7px;box-shadow:0 1px 3px #27241909}
+#modx-body-tag #modx-action-buttons .x-btn:not(.x-item-disabled) button{font-family:var(--angel-ui)}
+#modx-body-tag .x-item-disabled,
+#modx-body-tag [aria-disabled=true],
+#modx-body-tag :disabled{cursor:not-allowed}
+#modx-body-tag #modx-abtn-save.x-item-disabled{background:#e2ded5;border-color:#cac5b8;box-shadow:none}
+#modx-body-tag #modx-abtn-save.x-item-disabled button{color:#77796f}
+/* Keep modal boundaries, selected rows, error colours and keyboard focus visible. */
+#modx-body-tag .x-window{background:var(--angel-paper);border-color:#a99e88;border-radius:10px;box-shadow:0 16px 48px #20251f2b}
+#modx-body-tag .x-window .x-window-header{background:#eee7da;color:#443b2d;font-family:var(--angel-ui)}
+#modx-body-tag .x-window .x-window-body{background:var(--angel-paper);color:#30372e}
+#modx-body-tag .x-menu{background:var(--angel-paper);border-color:#cfc7b7;border-radius:7px;box-shadow:0 8px 24px #25291f24}
+#modx-body-tag .x-menu-item-active{background:#efe7d8;border-color:#c1a77c}
+#modx-body-tag :is(a,button,input,textarea,select,[tabindex]):focus-visible{outline:3px solid var(--angel-focus);outline-offset:2px}
+#modx-body-tag #modx-leftbar :is(a,button,input):focus-visible{outline-color:#b8dfee}
+/* Existing owner widget is our HTML; its layout remains responsive. */
+#modx-body-tag .angel-owner{background:linear-gradient(140deg,#fffefa,#f5eedf);font-family:var(--angel-ui);color:#30362c}
+#modx-body-tag .angel-owner h2{font-family:AngelDisplay,Georgia,serif;font-size:clamp(28px,3vw,40px);font-weight:400}
+#modx-body-tag .angel-owner .angel-brandmark{background:#242823;color:#d2b58b;border-color:#bfa57c;font-family:AngelDisplay,Georgia,serif}
+#modx-body-tag .angel-owner .angel-guide{background:#fffdf7;border-color:#dfd3bf;border-radius:9px;box-shadow:0 2px 10px #423a2408}
+#modx-body-tag .angel-owner .angel-links a{background:#2f392f;border-color:#2f392f;border-radius:7px}
+#modx-body-tag .angel-owner .angel-links a.angel-secondary{color:#384133;background:#fffdf7;border-color:#b9b29e}
+@media(prefers-reduced-motion:reduce){#modx-body-tag{scroll-behavior:auto}}
+/* Actual UI contrast corrections; no geometry, state, labels or handler changes. */
+#modx-body-tag #modx-leftbar .tree-pseudoroot-node:not(.x-tree-selected){background:#30352f;border-color:#464c40}
+#modx-body-tag #modx-leftbar .x-tree-ec-icon{color:#bdb9ac}
+#modx-body-tag #modx-manager-search-icon .icon.icon-square{color:#343b32}
+#modx-body-tag #modx-manager-search-icon .icon.icon-search{color:#fffefa}
+#modx-body-tag #modx-topnav>li{border-color:#dedbd2}
+/* Only the new owned frame and the native CSS-positioned actionbar.
+   Native west/east/center dimensions belong to Ext, not this stylesheet. */
+@media(min-width:641px){
+#modx-body-tag.angel-native-editor-frame[data-angel-editor-geometry=ready][data-angel-editor-toolbar-fit=ready] #modx-action-buttons{
+ left:var(--angel-editor-center-left);right:auto;top:var(--angel-editor-center-top);
+ max-width:var(--angel-editor-center-width);background:var(--angel-ivory);border-bottom:1px solid var(--angel-line);box-shadow:none;
+}
+/* The actual native resource panel is intrinsic/static; reserve real toolbar height. */
+#modx-body-tag.angel-native-editor-frame[data-angel-editor-geometry=ready] #modx-panel-resource{
+ padding-top:calc(var(--angel-editor-bar-height) + 12px);
+}
+}
+#modx-body-tag.angel-native-editor-frame #modx-resource-header{font-size:29px;line-height:1.2}
+#modx-body-tag.angel-native-editor-frame #modx-resource-main-columns>.x-panel-bwrap>.x-panel-body{background:var(--angel-paper);border-radius:8px}
+#modx-body-tag.angel-native-editor-frame #modx-resource-content>.x-panel-bwrap>.x-panel-body{background:var(--angel-paper);border-color:var(--angel-line);border-radius:8px}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview{
+ padding:22px 18px 28px;color:#292d27;background:#efebe3;font-family:var(--angel-ui);font-size:13px;line-height:1.5;box-sizing:border-box;
+}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview h2{margin:0 0 6px;font:400 20px/1.2 AngelDisplay,Georgia,serif;letter-spacing:-.02em;color:#34392f}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview p{margin:0 0 8px;color:#696a60;font-size:12px;line-height:1.45}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview__toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:14px 0}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview button,
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview-open{
+ min-height:34px;border:1px solid #cbc3b4;border-radius:6px;padding:6px 10px;background:#fffdf6;color:#34392f;font:600 12px/1.4 var(--angel-ui);cursor:pointer;
+ transition:background-color 120ms ease-out,border-color 120ms ease-out;
+}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview button:hover:not(:disabled){background:#e9e0cf;border-color:#ab9876}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview button[aria-pressed=true]{background:#2d352c;color:#fff9ed;border-color:#2d352c}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview button:disabled{color:#77786e;background:#e3dfd5;cursor:not-allowed}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview__canvas{
+ height:530px;max-height:64vh;min-height:240px;overflow:hidden;position:relative;box-sizing:border-box;
+ border:4px solid #292d26;border-radius:12px;background:#fffdf6;box-shadow:0 0 0 1px #9b9689,0 8px 24px #28251b26;
+}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview__frame{position:absolute;left:0;top:0;border:0;transform-origin:0 0;background:#fff;pointer-events:none}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview__status{min-height:0;margin:8px 0;color:#626456;font-size:12px}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview__status[data-state=error]{color:#a72e22}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview__link{display:inline-block;margin-top:8px;color:#795a2b;text-decoration:underline;text-underline-offset:3px}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview-region{background:#efebe3;border-left:1px solid #d6d0c3}
+/* One short entrance on our own surface; editing and native controls stay still. */
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview{animation:angel-preview-arrive 240ms ease-out both;background:linear-gradient(155deg,#f8f5ee,#efebe3 65%)}
+@keyframes angel-preview-arrive{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(max-width:800px){
+ #modx-body-tag.angel-native-editor-frame .angel-editor-preview{padding:16px}
+ #modx-body-tag.angel-native-editor-frame .angel-editor-preview button{min-height:42px}
+}
+@media(prefers-reduced-motion:reduce){
+ #modx-body-tag.angel-native-editor-frame .angel-editor-preview button{transition:none}
+ #modx-body-tag.angel-native-editor-frame .angel-editor-preview{animation:none}
+}
+
+/* Native root label owns a light span background; clear only its unselected state. */
+#modx-body-tag #modx-leftbar .tree-pseudoroot-node:not(.x-tree-selected) a span{background-color:transparent;color:#e6e3db}
+
+/* Only our preview window defeats native mobile body auto-height. The native
+   file browser and all foreign windows retain their original layout rules. */
+#modx-body-tag .x-window.angel-editor-preview-dialog{max-height:calc(100vh - 32px);max-width:calc(100vw - 32px)}
+#modx-body-tag .angel-editor-preview-dialog .x-window-body{
+ height:var(--angel-editor-modal-body-height,auto)!important;
+ max-height:calc(100vh - 64px);overflow:auto!important;box-sizing:border-box;
+}
+
+/* Desktop resource navigator: native regions and handlers remain authoritative. */
+@media(min-width:1240px){
+#modx-body-tag.angel-native-editor-frame #modx-resource-tree .x-tree-node-el{line-height:32px;min-height:32px;border-radius:5px}
+#modx-body-tag.angel-native-editor-frame #modx-resource-tree .x-tree-node a span{font-size:13px}
+#modx-body-tag.angel-native-editor-frame #modx-leftbar-tabpanel .x-tab-strip-top>li.x-tab-strip-active{background:transparent;box-shadow:inset 0 -2px 0 var(--angel-coral)}
+}
+
+/* Wide published Update preview. The same surface is mounted outside this
+   east region in the dialog, where its existing flow must stay intact. */
+@media (min-width: 1500px) {
+  #modx-body-tag.angel-native-editor-frame #angel-native-editor-preview .angel-editor-preview {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) fit-content(64%);
+    grid-template-areas:
+      "heading  tools"
+      "status   status"
+      "canvas   canvas"
+      "subtitle subtitle"
+      "note     note"
+      "link     link";
+    align-items: start;
+    column-gap: 8px;
+    padding: 17px 24px 22px 18px;
+  }
+  #modx-body-tag.angel-native-editor-frame #angel-native-editor-preview .angel-editor-preview__heading {
+    grid-area: heading;
+    align-self: center;
+    min-width: 0;
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+  #modx-body-tag.angel-native-editor-frame #angel-native-editor-preview .angel-editor-preview__toolbar {
+    grid-area: tools;
+    min-width: 0;
+    margin: 0;
+    justify-content: flex-end;
+  }
+  #modx-body-tag.angel-native-editor-frame #angel-native-editor-preview .angel-editor-preview__status {
+    grid-area: status;
+    min-width: 0;
+    margin: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  #modx-body-tag.angel-native-editor-frame #angel-native-editor-preview .angel-editor-preview__canvas {
+    grid-area: canvas;
+    min-width: 0;
+    height: 524px;
+    margin: 6px 0 10px;
+  }
+  #modx-body-tag.angel-native-editor-frame #angel-native-editor-preview .angel-editor-preview__subtitle {
+    grid-area: subtitle;
+    margin: 0 0 4px;
+  }
+  #modx-body-tag.angel-native-editor-frame #angel-native-editor-preview .angel-editor-preview__device-note {
+    grid-area: note;
+    margin: 0;
+  }
+  #modx-body-tag.angel-native-editor-frame #angel-native-editor-preview .angel-editor-preview__link {
+    grid-area: link;
+    justify-self: start;
+    overflow-wrap: anywhere;
+  }
+  #modx-body-tag.angel-native-editor-frame #angel-native-editor-preview .angel-editor-preview__link[hidden] {
+    display: none;
+  }
+}
+
+/* P0-CHAT-3: only the owned Update frame; native region geometry stays in Ext.
+   Reuse the single status node when no published URL is available. */
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview-launch--unavailable {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border: 1px solid var(--angel-line);
+  border-left: 3px solid var(--angel-gold);
+  border-radius: 8px;
+  background: var(--angel-paper);
+}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview-launch--unavailable .angel-editor-preview__status {
+  margin: 0;
+  color: #555b50;
+  font: 400 13px/1.5 var(--angel-ui);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+#modx-body-tag.angel-native-editor-frame .angel-editor-preview-open[hidden] {
+  display: none;
+}
+/* Typography only: preserve real labels, brand assets and native controls. */
+#modx-body-tag.angel-native-editor-frame #modx-panel-resource .x-form-item-label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #353a32;
+}
+#modx-body-tag.angel-native-editor-frame #site_name {
+  font-size: 24px;
+  letter-spacing: -.02em;
+}
+#modx-body-tag.angel-native-editor-frame #modx-site-info .full_appname {
+  letter-spacing: .06em;
+}
